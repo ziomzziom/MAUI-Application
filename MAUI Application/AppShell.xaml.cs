@@ -8,6 +8,6 @@ public partial class AppShell : Shell
 	{
 		InitializeComponent();
 
-		Routing.RegisterRoute(nameof(FlyoutPageDemo), typeof(FlyoutPageDemo));
-	}
+        Routing.RegisterRoute(nameof(FlyoutPageDemo), typeof(FlyoutPageDemo));
+    }
 }

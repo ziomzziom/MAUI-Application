@@ -4,15 +4,30 @@
              x:Class="MAUI_Application.MainPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="Resources/Images/bar_icon.svg"
-                     Command="{Binding NavigateCommand}" />
+        <ToolbarItem IconImageSource="Resources/Images/bar_icon.svg" 
+                     Command="NavigateCommand" />
     </ContentPage.ToolbarItems>
 
     <ScrollView>
+        
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
+            
+
+            <Button 
+                Text="Check Internet"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                WidthRequest="250"
+                HeightRequest="310"
+                HorizontalOptions="Center" />
+            
         </VerticalStackLayout>
     </ScrollView>
 
