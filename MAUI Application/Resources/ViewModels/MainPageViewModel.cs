@@ -2,35 +2,35 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MAUI_Application.Resources.Views;
 
-namespace MAUI_Application.ViewModels
+namespace MAUI_Application.Resources.ViewModels;
+
+public partial class MainPageViewModel : ObservableObject
 {
+    IConnectivity connectivity;
 
-    public partial class MainViewModel : ObservableObject
+    public MainPageViewModel(IConnectivity connectivity)
     {
-        IConnectivity connectivity;
+        this.connectivity = connectivity;
+    }
 
-        public MainViewModel(IConnectivity connectivity)
+    // Add default constructor
+
+    // [ICommand] is now [RelayCommand] from the .NET community toolkit
+    // [CommunityToolkit.Mvvm.Input.RelayCommand]
+    [RelayCommand]
+    public Task Navigate()
+    {
+        return Shell.Current.GoToAsync(nameof(FlyoutPageDemo));
+    }
+
+    [RelayCommand]
+    public async Task CheckInternet()
+    {
+        NetworkAccess accessType = connectivity.NetworkAccess;
+
+        if (accessType != NetworkAccess.Internet)
         {
-            this.connectivity = connectivity;
-        }
-
-
-        // [ICommand] is now [RelayCommand] from the .NET community toolkit
-        // [CommunityToolkit.Mvvm.Input.RelayCommand]
-        [RelayCommand]
-        Task Navigate() =>
-            Shell.Current.GoToAsync(nameof(FlyoutPageDemo));
-
-
-        [RelayCommand]
-        async Task CheckInternet()
-        {
-            NetworkAccess accessType = connectivity.NetworkAccess;
-
-            if (accessType == NetworkAccess.Internet)
-            {
-                await Shell.Current.DisplayAlert("Check internet!", $"Current status: {accessType}", "OK");
-            }
+            await Shell.Current.DisplayAlert("Check internet!", $"Current status: {accessType}", "OK");
         }
     }
 }
