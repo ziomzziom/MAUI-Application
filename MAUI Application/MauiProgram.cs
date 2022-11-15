@@ -1,11 +1,14 @@
-﻿namespace MAUI_Application;
+﻿using MAUI_Application.Resources.ViewModels;
+using MAUI_Application.Resources.Views;
+
+namespace MAUI_Application;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
 			.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{
@@ -13,6 +16,18 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		return builder.Build();
+        //services
+        builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
+
+        //viewmodels
+        builder.Services.AddTransient<MainPageViewModel>();
+        //builder.Services.AddTransient<FlyOutPageDemoViewModel>();
+
+        //pages
+        builder.Services.AddTransient<MainPage>();
+        builder.Services.AddTransient<FlyoutPageDemo>();
+
+
+        return builder.Build();
 	}
 }

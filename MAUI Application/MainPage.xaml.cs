@@ -1,17 +1,15 @@
-﻿using MAUI_Application.Resources.ViewModels;
+﻿using AndroidX.Lifecycle;
+using MAUI_Application.Resources.ViewModels;
 
 namespace MAUI_Application;
 
 public partial class MainPage : ContentPage
 {
-	public MainPage()
-	{
-        InitializeComponent();
-    }
-
-    public MainPageViewModel ViewModel()
+	public MainPage(MainPageViewModel viewmodel)
     {
-        return (MainPageViewModel)BindingContext;
+        InitializeComponent();
+
+        BindingContext = viewmodel;
     }
 }
 

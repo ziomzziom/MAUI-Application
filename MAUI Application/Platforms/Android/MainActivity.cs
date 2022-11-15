@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+[assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]
 
 namespace MAUI_Application;
 

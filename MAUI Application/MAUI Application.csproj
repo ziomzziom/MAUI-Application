@@ -64,8 +64,9 @@
 	<ItemGroup>
 	  <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="6.0.5" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+	  <PackageReference Include="Goldie.MauiPlugins.PageResolver" Version="1.0.7" />
+	  <PackageReference Include="Goldie.MauiPlugins.PageResolver.Autoreg" Version="1.0.5" />
 	  <PackageReference Include="SendGrid" Version="9.28.1" />
-	  <PackageReference Include="System.ObjectModel" Version="4.3.0" />
 	</ItemGroup>
 
 	<ItemGroup>
